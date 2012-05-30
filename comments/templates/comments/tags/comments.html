@@ -1,1 +1,17 @@
-<strong>{{ value }}</strong>
+{% if comments_list %}
+	<p>{{ comments_list }}</p>
+{% else %}
+	<p>Нет комментариев</p>
+{% endif %}
+
+<form action="/comment_form/" method="post">
+
+	<ul>
+		{{ form.as_ul }}
+		<li><input type="submit" value="Submit" /></li>
+	</ul>
+
+</form>
+<pre>
+{{ request }}
+</pre>

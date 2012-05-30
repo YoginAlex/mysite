@@ -1,20 +1,15 @@
 from django.db import models
+from django.forms import ModelForm
+from django.contrib.auth.models import User
 import datetime
 
 # Create your models here.
 	
-class User(models.Model):
-	email = models.EmailField()
-	login = models.CharField(max_length=50)
-	password = models.CharField(max_length=50)
-	def __unicode__(self):
-		return self.content
-
 class Comment(models.Model):
     content = models.TextField()
     pub_date = models.DateTimeField('date published')
-    # parent = models.ForeignKey('self', blank=True, null=True, related_name='child_set')
-    author = models.ForeignKey('User')
+    author = models.ForeignKey(User)
+    page_path = models.TextField()
     def __unicode__(self):
         return self.content
 	
