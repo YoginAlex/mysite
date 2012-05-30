@@ -12,11 +12,9 @@ from django.conf import settings
 from django.template.loader import render_to_string
 # Я пока плохо понял - какие модули следует импортировать, а какие нет... Где всё это почитать?
 
-def CommentForm(request):
+def comment_form(request):
 	if request.method == 'POST':
-	    form = CommentForm(request.POST)
-	        if form.is_valid():
-	            return render_to_response('polls/index.html', {'form': form, 'comments_list': "Много комментариев " })
-	else:
-	    form = FeedbackForm()
-		return render_to_response('comments/tags/comments.html', {'form': form})
+		form = CommentForm(request.POST)
+		if form.is_valid()
+			pass
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])

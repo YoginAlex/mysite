@@ -7,6 +7,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^polls/', include('polls.urls')),
-    url(r'comment_form/', 'mysite.comments.views.CommentForm'),
+    url(r'comment_form/', 'mysite.comments.views.comment_form'),
     url(r'^admin/', include(admin.site.urls)),
 )
