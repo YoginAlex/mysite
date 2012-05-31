@@ -15,6 +15,13 @@ from django.template.loader import render_to_string
 def comment_form(request):
 	if request.method == 'POST':
 		form = CommentForm(request.POST)
-		if form.is_valid()
+		if form.is_valid():
+			comments = Comment(content = form.cleaned_data['content'], 
+				author = form.cleaned_data['author'],
+				page_path = form.cleaned_data['page_path'])
+			comments.save()
+		else:
 			pass
+	else:
+		pass
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])

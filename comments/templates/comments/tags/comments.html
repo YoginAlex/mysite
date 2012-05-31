@@ -1,9 +1,3 @@
-{% if comments_list %}
-	<p>{{ comments_list }}</p>
-{% else %}
-	<p>Нет комментариев</p>
-{% endif %}
-
 <form action="/comment_form/" method="post">
 
 	<ul>
@@ -12,6 +6,16 @@
 	</ul>
 
 </form>
-<pre>
-{{ request }}
-</pre>
+
+{% if comments_list %}
+    <ul>
+        {% for comment in comments_list %}
+            <li>
+                <div style="font-size: 10px">Автор: {{ comment.author }} - {{ comment.pub_date }}</div>
+                    {{ comment.content }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Нет комментариев</p>
+{% endif %}

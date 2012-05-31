@@ -11,6 +11,9 @@ from django.template import RequestContext
 register = template.Library()
 
 @register.inclusion_tag('comments/tags/comments.html')
-def commentslist(request):
-	form = CommentForm()
-	return {"form": form, "request": request}
+def commentslist(request, page_key):
+	form = CommentForm(initial={'page_path' : page_key })
+
+	comments_list = Comment.objects.filter(page_path = page_key)
+
+	return {"form": form, "request": request, "comments_list" : comments_list}
